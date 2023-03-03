@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap'; // TODO: COMMENT IN FOR AUTH
+import { Button } from 'react-bootstrap';
 import Link from 'next/link';
-import { useAuth } from '../utils/context/authContext'; // TODO: COMMENT IN FOR AUTH
+import { useAuth } from '../utils/context/authContext';
 import { getReviews } from '../api/reviewData';
 import ReviewCard from '../components/ReviewCard';
 
 function Home() {
-  const { user } = useAuth(); // TODO: COMMENT IN FOR AUTH
   const [reviews, setReviews] = useState([]);
+  const { user } = useAuth(); // TODO: COMMENT IN FOR AUTH
 
   const getAllReviews = () => {
     getReviews(user.uid).then(setReviews);
@@ -15,8 +15,7 @@ function Home() {
 
   useEffect(() => {
     getAllReviews();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
   return (
     <div className="text-center my-4">

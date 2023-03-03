@@ -21,7 +21,10 @@ function ReviewCard({ reviewObj, onUpdate }) {
     <Card style={{ width: '18rem', margin: '10px' }}>
       {/* Link to the review detail page */}
       <Link href={`/review/${reviewObj.firebaseKey}`} passHref>
-        <Card.Header style={{ cursor: 'pointer' }}>{reviewDetails.movie_id}</Card.Header>
+        <Card.Header style={{ cursor: 'pointer' }}>{
+        reviewDetails && reviewDetails.casting_rating
+}
+        </Card.Header>
       </Link>
       <ListGroup variant="flush">
         {/* Displaying review details */}

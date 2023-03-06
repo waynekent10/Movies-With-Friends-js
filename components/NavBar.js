@@ -20,6 +20,9 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link>Home</Nav.Link>
             </Link>
+            <Link passHref href="/review">
+              <Nav.Link>Reviews</Nav.Link>
+            </Link>
             <Link passHref href="/users">
               <Nav.Link>Friends</Nav.Link>
             </Link>

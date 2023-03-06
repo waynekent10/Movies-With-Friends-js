@@ -3,8 +3,8 @@ import { clientCredentials } from '../utils/client';
 const endpoint = clientCredentials.databaseURL;
 
 // GET ALL Reviews
-const getReviews = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/reviews.json?orderBy="uid"&equalTo="${uid}"`, {
+const getReviews = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/reviews.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ const getReviews = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 // Create Reviews
-const createAnswer = (payload) => new Promise((resolve, reject) => {
+const createReview = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/reviews.json`, {
     method: 'POST',
     headers: {
@@ -76,7 +76,7 @@ const updateReview = (payload) => new Promise((resolve, reject) => {
 
 export {
   getReviews,
-  createAnswer,
+  createReview,
   getSingleReview,
   deleteSingleReview,
   updateReview,

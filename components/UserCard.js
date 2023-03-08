@@ -14,13 +14,13 @@ function UserCard({ userObj, onUpdate }) {
 
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={userObj.image} alt={userObj.full_name} style={{ height: '400px' }} />
+      <Card.Img variant="top" src={userObj.image} alt={userObj.user_name} style={{ height: '400px' }} />
       <Card.Body>
-        <Card.Title>{userObj.full_name}</Card.Title>
-        <Link href={`/users/${userObj.firebaseKey}`} passHref>
+        <Card.Title>{userObj.user_name}</Card.Title>
+        <Link href={`/user/${userObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
-        <Link href={`users/edit/${userObj.firebaseKey}`} passHref>
+        <Link href={`user/edit/${userObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisUser} className="m-2">
@@ -35,7 +35,7 @@ UserCard.propTypes = {
   userObj: PropTypes.shape({
     firebaseKey: PropTypes.string,
     image: PropTypes.string,
-    full_name: PropTypes.string,
+    user_name: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

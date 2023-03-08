@@ -1,35 +1,30 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
-import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
-import { getReviews } from '../api/reviewData';
-import ReviewCard from '../components/ReviewCard';
+import MovieCard from '../components/MovieCard';
+import getMovies from '../api/tmdb';
 
 function Home() {
-  const [reviews, setReviews] = useState([]);
-  const { user } = useAuth(); // TODO: COMMENT IN FOR AUTH
+  const [movies, setMovies] = useState([]);
+  const { user } = useAuth();
 
-  const getAllReviews = () => {
-    getReviews(user.uid).then(setReviews);
+  const getAllMovies = () => {
+    getMovies(user.uid).then(setMovies);
   };
 
   useEffect(() => {
-    getAllReviews();
-  });
+    getAllMovies();
+  }, [user]); // Only user should be a dependency
 
   return (
     <div className="text-center my-4">
-      <Link href="/review/new" passHref>
-        <Button>Review</Button>
-      </Link>
       <div className="d-flex flex-wrap">
-        {/* Render reveiwCard component for each review in the reviews state */}
-        {reviews.map((review) => (
-          <ReviewCard key={review.firebaseKey} reviewObj={review} onUpdate={getAllReviews} />
+        {/* Render MovieCard component for each movie in the movies state */}
+        {movies.map((movieObj) => (
+          <MovieCard key={movieObj.movie_id} movieObj={movieObj} onUpdate={getAllMovies} />
         ))}
       </div>
     </div>
-
   );
 }
 
